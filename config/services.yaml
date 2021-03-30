@@ -1,2 +1,3 @@
 services:
+  App\Service\ExampleServiceInterface: App\Service\ExampleService
   App\Doctrine\Repository\PostRepositoryInterface: App\Doctrine\Repository\PostRepository
