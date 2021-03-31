@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\DependencyInjection\AutoWire;
-use App\Doctrine\Entity\Post;
+use App\Doctrine\Entity\Post\PostSql;
 use App\Doctrine\Repository\PostRepositoryInterface;
 
 final class PostController
@@ -22,7 +22,7 @@ final class PostController
 
     public function create(): string
     {
-        $post = new Post(); //tutaj powinien być post generowany i walidowany na podstawie symfony form
+        $post = new PostSql(); //tutaj powinien być post generowany i walidowany na podstawie symfony form
         $post->setTitle("Post " . (new \DateTimeImmutable())->format(\DateTime::COOKIE));
         $post->setDescription("Our simple resurrection for result is to absorb others sincerely.");
         $this->postRepository->save($post);

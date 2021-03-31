@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Doctrine\Entity;
+namespace App\Doctrine\Entity\Post;
 
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
@@ -9,10 +9,9 @@ use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="posts")
+ * @ORM\MappedSuperclass()
  */
-final class Post implements JsonSerializable
+abstract class Post implements JsonSerializable
 {
     /**
      * @ORM\Id

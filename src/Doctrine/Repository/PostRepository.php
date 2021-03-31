@@ -2,7 +2,8 @@
 
 namespace App\Doctrine\Repository;
 
-use App\Doctrine\Entity\Post;
+use App\Doctrine\Entity\Post\Post;
+use App\Doctrine\Entity\Post\PostSql;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 
@@ -10,7 +11,7 @@ final class PostRepository extends EntityRepository implements PostRepositoryInt
 {
     public function __construct(EntityManagerInterface $em)
     {
-        parent::__construct($em, $em->getClassMetadata(Post::class));
+        parent::__construct($em, $em->getClassMetadata(PostSql::class));
     }
 
     /**
@@ -32,5 +33,10 @@ final class PostRepository extends EntityRepository implements PostRepositoryInt
         }
 
         $this->getEntityManager()->flush();
+    }
+
+    public function countViewsForPost(Post $post): int
+    {
+        return 5;
     }
 }
